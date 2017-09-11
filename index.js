@@ -271,6 +271,21 @@ class Bot extends EventEmitter {
         return this._api('chat.postMessage', params);
     }
 
+    /**
+     * Set a new topic to a channel by ID
+     * @param {string} id - channel ID
+     * @param {string} topic
+     * @returns {vow.Promise}
+     */
+    updateTopicOfChannelById(id, topic, params) {
+        params = extend({
+            text: text,
+            channel: id
+        }, params || {});
+
+        return this._api('channels.setTopic', params);
+    }
+
      /**
       * Updates a message by timestamp
       * @param {string} id - channel ID
